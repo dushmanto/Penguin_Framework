@@ -26,6 +26,14 @@ public class Login_Page_Locator {
 		return password;
 	}
 	
+	// Pharmacy link locator ID added
+		@FindBy(id = "Pharmacy")
+		private WebElement pharmacyID;
+
+		public WebElement getPharmacy() {
+			return pharmacyID;
+		}
+	
 	@FindBy(id = "loginButton")
 	private WebElement loginBtn;
 	
