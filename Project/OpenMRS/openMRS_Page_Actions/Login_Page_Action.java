@@ -30,6 +30,16 @@ public class Login_Page_Action {
 		}
 	}
 	
+	// Pharmacy button click action added
+		public void clickPharmacy() {
+			WebElement pharEle = loginPL.getPharmacy();
+			if (WebElementCommon.webElementPresent(pharEle)) {
+				if (WebElementCommon.webElementClickble(pharEle)) {
+					WebButton.clickBtn(pharEle);
+				}
+			}
+		}
+	
 	public void clickLogin(){
 		WebElement btnEle = loginPL.getLoginBtn();
 		if(WebElementCommon.webElementPresent(btnEle)){
@@ -44,6 +54,7 @@ public class Login_Page_Action {
 		try {
 			enterUserName(user);
 			enterPassword(pass);
+			clickPharmacy();
 			clickLogin();
 			homePA = new Home_Page_Action(driver);
 		} catch (Exception e) {
