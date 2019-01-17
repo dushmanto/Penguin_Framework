@@ -40,4 +40,13 @@ public class Login_Page_Locator {
 	public WebElement getLoginBtn(){
 		return loginBtn;
 	}
+	
+	//Validation - Location not selected message - Cannot Login
+		@FindBy(id = "sessionLocationError")
+		private WebElement LocationNotSelectedMsg;
+		
+		public WebElement getLocationNotSelectedMsg()
+		{
+			return LocationNotSelectedMsg;
+		}
 }

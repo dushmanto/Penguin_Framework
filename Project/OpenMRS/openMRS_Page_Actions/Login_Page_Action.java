@@ -49,12 +49,23 @@ public class Login_Page_Action {
 		}
 	}
 	
+	//New method for unsuccessful login when location is not selected
+		public boolean LocationNotSelectedMsg(String ValMsgLocation) {
+			WebElement lblEle = loginPL.getLocationNotSelectedMsg();
+			if (WebElementCommon.webElementPresent(lblEle)) {
+				if (lblEle.getText().equals(ValMsgLocation)) {
+					return true;
+				}
+			}
+			return false;
+		}
+	
 	public Home_Page_Action succesfulLogin(String user, String pass){
 		Home_Page_Action homePA = null;
 		try {
 			enterUserName(user);
 			enterPassword(pass);
-			clickPharmacy();
+			clickPharmacy(); //Called the method to click pharmacy
 			clickLogin();
 			homePA = new Home_Page_Action(driver);
 		} catch (Exception e) {
@@ -62,4 +73,19 @@ public class Login_Page_Action {
 		}
 		return homePA;
 	}
+	
+	// Unsuccessful login when location is not selected
+		public boolean unSuccessfulLoginLocationNotSelected(String user, String pass,
+				String ValMsgLocation) {
+			boolean value = false;
+			try {
+				enterUserName(user);
+				enterPassword(pass);
+				clickLogin();
+				value = LocationNotSelectedMsg(ValMsgLocation);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return value;
+		}
 }
